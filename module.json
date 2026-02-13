@@ -1,0 +1,24 @@
+{
+  "id": "merchant-trader",
+  "title": "Merchant Trader 5e",
+  "description": "Ein interaktives 2-Fenster Händler-Modul mit Warenkorb-System für DnD 5e.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "authors": [
+    {
+      "name": "Dein Name"
+    }
+  ],
+  "esmodules": [
+    "merchant-app.js"
+  ],
+  "styles": [
+    "style.css"
+  ],
+  "systems": [
+    "dnd5e"
+  ]
+}

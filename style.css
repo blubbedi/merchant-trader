@@ -1,0 +1,157 @@
+/* Grundlayout */
+.merchant-window .trade-container {
+    display: flex;
+    height: 95%; 
+    gap: 10px;
+    align-items: stretch;
+    padding-top: 10px;
+}
+
+.merchant-window .icon-header i {
+    margin-right: 10px;
+    color: #4b4a44;
+}
+
+.merchant-window .inventory-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #7a7971;
+    border-radius: 5px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.merchant-window .trade-center {
+    flex: 1.5;
+    border: 1px solid #7a7971;
+    border-radius: 5px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.merchant-window .column-header-container {
+    display: flex;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    align-items: center;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+.merchant-bg { background: rgba(139, 69, 19, 0.1); } 
+.player-bg { background: rgba(0, 50, 100, 0.1); } 
+
+.merchant-window .portrait-wrapper {
+    flex: 0 0 64px; 
+    height: 64px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.merchant-window .portrait-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border: none;
+}
+
+.merchant-window .header-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.merchant-window select {
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: "Modesto Condensed", "Palatino Linotype", serif;
+}
+
+.merchant-window .currency-display {
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.merchant-window .fa-coins.gp { color: #ffd700; }
+.merchant-window .fa-coins.sp { color: #c0c0c0; }
+.merchant-window .fa-coins.cp { color: #cd7f32; }
+
+.merchant-window .scrollable {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 5px; 
+}
+
+.merchant-window .instruction {
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: center;
+    color: #4b4a44;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.merchant-window .item {
+    border-bottom: 1px solid #c9c7b8;
+    padding: 4px 0;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+}
+
+.merchant-window .item:hover { background: rgba(255, 255, 255, 0.5); }
+
+.merchant-window .item-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+}
+
+.merchant-window .price {
+    font-style: italic;
+    color: #4b4a44;
+    font-size: 0.9em;
+}
+
+.merchant-window .cart-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.merchant-window .cart-item {
+    padding: 4px;
+    margin: 2px 0;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 3px;
+}
+
+.merchant-window .cart-item.buy { background: rgba(0, 255, 0, 0.1); border-left: 4px solid #2d5a27; }
+.merchant-window .cart-item.sell { background: rgba(255, 0, 0, 0.1); border-left: 4px solid #7a2525; }
+.merchant-window .cart-item:hover { text-decoration: line-through; opacity: 0.8; }
+
+.merchant-window .balance-sheet {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: auto; 
+    border-top: 1px solid #7a7971;
+}
+
+.merchant-window .final-cost { font-size: 1.1em; margin: 10px 0; }
+.merchant-window .cost-label.paying { color: #8b0000; font-weight: bold; display: block; }
+.merchant-window .cost-label.receiving { color: #006400; font-weight: bold; display: block; }
+.merchant-window .warning-text { color: #8b0000; font-style: italic; font-size: 0.9em; text-align: center;}

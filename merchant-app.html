@@ -1,0 +1,142 @@
+<form class="{{cssClass}} merchant-window" autocomplete="off">
+    <header class="sheet-header icon-header">
+        <i class="fas fa-balance-scale"></i>
+        <h1 class="charname">Globaler Handelsplatz</h1>
+    </header>
+
+    <div class="trade-container">
+        
+        <section class="inventory-column merchant-inventory">
+            <div class="column-header-container merchant-bg">
+                {{#if merchant}}
+                <div class="portrait-wrapper">
+                    <img src="{{merchant.img}}" alt="{{merchant.name}}" title="{{merchant.name}}">
+                </div>
+                {{/if}}
+                
+                <div class="header-controls">
+                    <select id="merchant-selector">
+                        {{#each merchants}}
+                            <option value="{{this.id}}" {{#if (eq this.id ../selectedMerchantId)}}selected{{/if}}>
+                                🏪 {{this.name}}
+                            </option>
+                        {{/each}}
+                    </select>
+
+                    {{#if merchant}}
+                    <div class="currency-display">
+                        <span title="Gold">{{merchantCurrency.gp}} <i class="fas fa-coins gp"></i></span>
+                        <span title="Silber">{{merchantCurrency.sp}} <i class="fas fa-coins sp"></i></span>
+                        <span title="Kupfer">{{merchantCurrency.cp}} <i class="fas fa-coins cp"></i></span>
+                    </div>
+                    {{else}}
+                        <p class="warning-text">Kein Händler im Ordner "Händler" gefunden.</p>
+                    {{/if}}
+                </div>
+            </div>
+
+            {{#if merchant}}
+            <p class="instruction">Doppelklick zum Kaufen</p>
+            <ol class="items-list scrollable">
+                {{#each merchantItems as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <div class="item-name">
+                        <img src="{{item.img}}" width="24" height="24"/>
+                        <h4>{{item.name}} {{#if (gt item.system.quantity 1)}}({{item.system.quantity}}){{/if}}</h4>
+                    </div>
+                    <span class="price">{{item.system.price.value}} {{item.system.price.denomination}}</span>
+                </li>
+                {{/each}}
+            </ol>
+            {{/if}}
+        </section>
+
+        <section class="trade-center">
+            <div class="cart-box">
+                <h4><i class="fas fa-shopping-cart"></i> Warenkorb</h4>
+                <p class="instruction">Klick zum Entfernen</p>
+                
+                <div class="cart-items scrollable">
+                    {{#each buyCart as |item idx|}}
+                    <div class="cart-item buy" data-index="{{idx}}" data-type="buy" title="Entfernen">
+                        <i class="fas fa-plus-circle"></i> {{item.name}} ({{item.price}} {{item.denom}})
+                    </div>
+                    {{/each}}
+                    
+                    {{#each sellCart as |item idx|}}
+                    <div class="cart-item sell" data-index="{{idx}}" data-type="sell" title="Entfernen">
+                        <i class="fas fa-minus-circle"></i> {{item.name}} ({{item.price}} {{item.denom}})
+                    </div>
+                    {{/each}}
+                </div>
+
+                <div class="balance-sheet">
+                    <h4>Bilanz</h4>
+                    <div class="final-cost">
+                        {{#if isPlayerPaying}}
+                            <span class="cost-label paying">Spieler zahlt:</span>
+                        {{else}}
+                            <span class="cost-label receiving">Spieler erhält:</span>
+                        {{/if}}
+                        
+                        <span class="currency-values">
+                            {{#if formattedBalance.gp}}{{formattedBalance.gp}} <i class="fas fa-coins gp"></i> {{/if}}
+                            {{#if formattedBalance.sp}}{{formattedBalance.sp}} <i class="fas fa-coins sp"></i> {{/if}}
+                            {{formattedBalance.cp}} <i class="fas fa-coins cp"></i>
+                        </span>
+                    </div>
+
+                    <button class="execute-trade" {{#unless canTrade}}disabled{{/unless}}>
+                        <i class="fas fa-handshake"></i> Handel abschließen
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="inventory-column player-inventory">
+            <div class="column-header-container player-bg">
+                {{#if playerCharacter}}
+                <div class="portrait-wrapper">
+                    <img src="{{playerCharacter.img}}" alt="{{playerCharacter.name}}" title="{{playerCharacter.name}}">
+                </div>
+                {{/if}}
+
+                 <div class="header-controls">
+                    <select id="player-selector">
+                        {{#each players}}
+                            <option value="{{this.id}}" {{#if (eq this.id ../selectedPlayerId)}}selected{{/if}}>
+                                🎒 {{this.name}}
+                            </option>
+                        {{/each}}
+                    </select>
+
+                    {{#if playerCharacter}}
+                    <div class="currency-display">
+                        <span title="Gold">{{playerCurrency.gp}} <i class="fas fa-coins gp"></i></span>
+                        <span title="Silber">{{playerCurrency.sp}} <i class="fas fa-coins sp"></i></span>
+                        <span title="Kupfer">{{playerCurrency.cp}} <i class="fas fa-coins cp"></i></span>
+                    </div>
+                    {{else}}
+                        <p class="warning-text">Kein aktiver Spielercharakter gefunden.</p>
+                    {{/if}}
+                </div>
+            </div>
+
+            {{#if playerCharacter}}
+            <p class="instruction">Doppelklick zum Verkaufen</p>
+            <ol class="items-list scrollable">
+                {{#each playerItems as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <div class="item-name">
+                        <img src="{{item.img}}" width="24" height="24"/>
+                        <h4>{{item.name}} {{#if (gt item.system.quantity 1)}}({{item.system.quantity}}){{/if}}</h4>
+                    </div>
+                    <span class="price">{{item.system.price.value}} {{item.system.price.denomination}}</span>
+                </li>
+                {{/each}}
+            </ol>
+            {{/if}}
+        </section>
+
+    </div>
+</form>
