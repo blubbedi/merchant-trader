@@ -1,0 +1,35 @@
+<form class="merchant-setup-window" autocomplete="off">
+    <div class="setup-header">
+        <h2><i class="fas fa-ghost"></i> Handel vorbereiten</h2>
+    </div>
+
+    <div class="form-group">
+        <label><i class="fas fa-user-tie"></i> Händler (NPC):</label>
+        <select id="setup-merchant-id">
+            {{#each merchants}}<option value="{{this.id}}">{{this.name}}</option>{{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><i class="fas fa-user"></i> Spieler-Charakter:</label>
+        <select id="setup-player-id">
+            {{#each players}}<option value="{{this.id}}">{{this.name}}</option>{{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><i class="fas fa-percent"></i> Ankaufskurs: <span id="factor-display">50%</span></label>
+        <input type="range" id="setup-sell-factor" min="0.1" max="1.0" step="0.1" value="0.5" style="width: 100%;">
+    </div>
+
+    <div class="form-group" style="margin-top: 15px; padding: 10px; background: rgba(0,0,0,0.1); border-radius: 5px; border: 1px dashed #7a7971;">
+        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="setup-soul-coin-mode" style="width: 16px; height: 16px;"> 
+            <span><i class="fas fa-skull" style="color: #555;"></i> Handel in Seelenmünzen (1:1000 GP)</span>
+        </label>
+    </div>
+
+    <button type="button" id="start-trade-btn" style="margin-top: 15px;" {{#unless canStart}}disabled{{/unless}}>
+        <i class="fas fa-play"></i> Handel starten
+    </button>
+</form>

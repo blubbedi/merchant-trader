@@ -1,15 +1,15 @@
 {
-  "id": "merchant-trader",
+  "id": "merchant-trader-v2",
   "title": "Merchant Trader 5e",
-  "description": "Ein interaktives 2-Fenster Händler-Modul mit Warenkorb-System für DnD 5e.",
-  "version": "1.0.0",
+  "description": "Ein interaktives Netzwerk-Händler-Modul mit Warenkorb-System, Feilschen und Seelenmünzen-Modus.",
+  "version": "2.6.0",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
   },
   "authors": [
     {
-      "name": "Dein Name"
+      "name": "blubbedi"
     }
   ],
   "esmodules": [
@@ -20,5 +20,7 @@
   ],
   "systems": [
     "dnd5e"
-  ]
+  ],
+  "manifest": "https://github.com/blubbedi/merchant-trader/releases/latest/download/module.json",
+  "download": "https://github.com/blubbedi/merchant-trader/releases/latest/download/module.zip"
 }
